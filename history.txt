@@ -1,0 +1,31 @@
+Mini-EP-6 / Clara Yuki Sano - NUSP:11809920
+
+Para buildar a imagem:
+docker image build . -t custom-caddy:1.0 
+
+Para rodar o contêiner (sem criação de volumes)
+docker container run --name my-caddy -p 8080:80 -d custom-caddy:1.0
+
+Para parar o contêiner:
+docker container stop my-caddy
+
+Para remover o contêiner:
+docker container rm my-caddy
+
+- Nesta etapa, foi utilizada a criação de volumes para mapear os arquivos 
+da minha máquina para os arquivos do contêiner de Docker
+
+Para buildar a imagem:
+docker image build . -t custom-caddy:1.0 
+
+Para rodar o contêiner (sem criação de volumes)
+docker container run --name my-caddy -p 8080:80 -v ./html_files:/usr/src/pages -v ./caddy:/etc/caddy -d custom-caddy:1.0
+
+(Agora, se eu alterar qualquer um dos arquivos, não preciso rebuildar o contêiner)
+
+Para parar o contêiner:
+docker container stop my-caddy
+
+Para remover o contêiner:
+docker container rm my-caddy
+
